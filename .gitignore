@@ -1,0 +1,11 @@
+node_modules/
+build/
+.turbo/
+.cache/
+.react-router/
+*.tsbuildinfo
+.DS_Store
+commune.db
+commune.db-wal
+commune.db-shm
+.env
