@@ -46,9 +46,7 @@ async function getCases(): Promise<CaseRow[]> {
 }
 
 async function getCase(id: string): Promise<CaseRow | null> {
-  return (
-    db.select().from(cases).where(eq(cases.id, id)).get() ?? null
-  );
+  return db.select().from(cases).where(eq(cases.id, id)).get() ?? null;
 }
 
 async function getCaseUpdates(caseId: string): Promise<UpdateRow[]> {
