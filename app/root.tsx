@@ -9,7 +9,8 @@ import {
   isRouteErrorResponse,
   useLocation,
 } from "react-router";
-import { AppNavigation } from "@ponti-studios/ui/navigation";
+import { Button } from "@ponti-studios/ui/primitives";
+import { Navigation } from "@ponti-studios/ui/navigation";
 import type { Route } from "./+types/root";
 import "./app.css";
 import QueryProvider from "./components/QueryProvider";
@@ -49,15 +50,21 @@ export default function App() {
   const location = useLocation();
   return (
     <QueryProvider>
-      <AppNavigation
-        brand="Commune"
-        brandHref="/"
-        links={[{ href: "/", label: "Docket" }]}
-        cta={{ href: "/case/create", label: "File a case" }}
-        activeHref={location.pathname}
-        linkComponent={Link}
-        linkProp="to"
-      />
+      <Navigation>
+        <Navigation.Brand>
+          <Link to="/">Commune</Link>
+        </Navigation.Brand>
+        <Navigation.List>
+          <Navigation.Item asChild active={location.pathname === "/"}>
+            <Link to="/">Docket</Link>
+          </Navigation.Item>
+        </Navigation.List>
+        <Navigation.Action>
+          <Button asChild>
+            <Link to="/case/create">File a case</Link>
+          </Button>
+        </Navigation.Action>
+      </Navigation>
       <div className="pt-20">
         <Outlet />
       </div>
